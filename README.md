@@ -2,9 +2,9 @@
 
 > **This is your portfolio.** Everything you build, hand in and learn during the minor lives here.
 
-- **Name:** _Minhyeok Sung_
-- **Student number:** _23170514_
-- **Cohort / year:** _2026-2027_
+- **Name:** Minhyeok Sung
+- **Student number:** 23170514
+- **Cohort / year:** 2026-2027
 
 ---
 
