@@ -1,0 +1,1 @@
+https://studyscrolly.lovable.app
