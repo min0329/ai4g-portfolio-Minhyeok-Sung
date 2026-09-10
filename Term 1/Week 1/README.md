@@ -23,13 +23,13 @@ _List the files, or link to them. Notebook exports, screenshots, scripts._
 > Your tool and your SDG for this hackathon are announced at the **start of Friday's class**.
 > Write them down here once you know them.
 
-**Project title:**
+**Project title:** Scrolly
 
-**My pair partner:**
+**My pair partner:** Pavitra
 
-**Tool we had to use:**
+**Tool we had to use:** Lovable
 
-**SDG we had to address:**
+**SDG we had to address:** SDG 4: Quality Education
 
 **What problem does it solve, and for whom?**
 _Name a real, specific user. "Everyone" is not a user._
