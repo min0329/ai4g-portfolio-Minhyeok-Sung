@@ -66,7 +66,10 @@ https://studyscrolly.lovable.app
 
 
 **Ethical reflection - what are the risks of your tool? Who could it harm?**
-_Every hackathon requires this. One honest paragraph beats three vague ones._
+
+As users need to copy and paste study materials into the app, it can occur copyright issues. It is because some materials or source can be non-distributable for free. But, for now our app Scrolly does not track or restrit these non-ethical action due to lack of technical issue.
+
+Furthermore, accuracy is also one of the most significant risks of Scrolly. For example, AI-generated wrong answer marked correct does not just fail to teach, it actively teaches something false to users. 
 
 
 ### Checklist
@@ -92,6 +95,8 @@ _Every hackathon requires this. One honest paragraph beats three vague ones._
 ## 4. Reflection
 
 **What is the most important thing I learned this week?**
+: In general, I have learned what AI is in deeper ways, and how it can influence diverse fields. Especially, through making an app Scrolly together with my partner, I have learnt that quality of education can be improved and more effective tailored to different students if AI is used in a good way.
+
 
 **Where does this connect to "AI for Good"?**
-_One concrete link to ethics, sustainability or social impact._
+It links to the social impact since it encourages students to learn and experience their study more, while offering them a chance to change their unproductive doomscrolling to smart doomscrolling.
