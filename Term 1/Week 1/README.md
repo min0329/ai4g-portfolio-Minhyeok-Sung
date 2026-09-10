@@ -23,16 +23,22 @@ _List the files, or link to them. Notebook exports, screenshots, scripts._
 > Your tool and your SDG for this hackathon are announced at the **start of Friday's class**.
 > Write them down here once you know them.
 
-**Project title:** Scrolly
+**Project title:** **Scrolly**
 
-**My pair partner:** Pavitra
+**My pair partner:** **Pavitra**
 
-**Tool we had to use:** Lovable
+**Tool we had to use:** **Lovable AI**
 
-**SDG we had to address:** SDG 4: Quality Education
+**SDG we had to address:** **SDG 4: Quality Education**
+ : Specifically **Target 4.1**: Quality primary and secondary education and effective learning outcomes, 
+ and **Target 4.5**: Equal access to education and reducing inequalities in education.
+
+Scrolly supports Target 4.1 by helping students actively learn and check their understanding of educational material rather than simply reading it. The interactive quizzes provide immediate feedback, helping learners identify what they understand and what they need to review.
+It also contributes to Target 4.5 by making dense educational content more accessible and approachable for students with different learning preferences and reading abilities, including learners who may struggle with traditional long-form text.
+
 
 **What problem does it solve, and for whom?**
-_Name a real, specific user. "Everyone" is not a user._
+: Scrolly helps students who struggle with long and difficult study materials. It turns textbooks, notes, and articles into scrollable, short, interactive cards with concepts, definitions, example, quizzes, summaries, etc., so that users can overcome the barriers to reading long texts, while supporting diverse langauges which making learning more accessible.
 
 **What did you build?**
 _Two or three sentences. What can a user actually do with it?_
