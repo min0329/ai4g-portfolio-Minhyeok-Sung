@@ -1,0 +1,212 @@
+{
+  "name": "NutriPlan - Daily Emails",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 9
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        0,
+        0
+      ],
+      "id": "2c20e287-607c-4864-9c8a-531546729a0f",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $json.to }}",
+        "subject": "={{ $json.Subject }}",
+        "message": "={{ $json.message }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        1296,
+        0
+      ],
+      "id": "b1b07531-d924-46fd-a3f9-344811ea7b32",
+      "name": "Send a message",
+      "webhookId": "d3253207-2171-4854-b788-2685fc2f0c90",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "W444XFsdhqkXcJmY",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1CowcwdtQwRkZ9L6BGVhFSwG9ZzUBqxyOWgztkfIxRUw",
+          "mode": "list",
+          "cachedResultName": "NutriPlan Database",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1CowcwdtQwRkZ9L6BGVhFSwG9ZzUBqxyOWgztkfIxRUw/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Weekly Plans",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1CowcwdtQwRkZ9L6BGVhFSwG9ZzUBqxyOWgztkfIxRUw/edit#gid=0"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        224,
+        0
+      ],
+      "id": "e13fd412-100f-4032-bda9-89bc121acc28",
+      "name": "Get Weekly Plan",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "JWCQ4nut6COBuvOa",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const row = $input.first().json;\n\n// Get the weekly plan directly\nconst weeklyPlanText = String(row.weekly_plan || \"\");\n\nif (!weeklyPlanText) {\n  throw new Error(\"The weekly_plan field is empty.\");\n}\n\n// Determine today's day\nconst today = new Date().toLocaleDateString(\"en-US\", {\n  weekday: \"long\"\n});\n\n// Remove Markdown code fences if they exist\nconst cleanedPlan = weeklyPlanText\n  .replace(/^```json\\s*/i, \"\")\n  .replace(/^```\\s*/i, \"\")\n  .replace(/\\s*```$/i, \"\")\n  .trim();\n\n// Convert to JSON\nlet weeklyPlan;\n\ntry {\n  weeklyPlan = JSON.parse(cleanedPlan);\n} catch (error) {\n  throw new Error(\n    \"The weekly_plan exists but could not be converted to JSON. \" +\n    \"First characters: \" + cleanedPlan.substring(0, 150)\n  );\n}\n\n// Find today's meals\nconst todayPlan = weeklyPlan[today];\n\nif (!todayPlan) {\n  throw new Error(\n    `No meal plan found for ${today}. Available days: ` +\n    Object.keys(weeklyPlan).join(\", \")\n  );\n}\n\n// Return today's plan\nreturn [{\n  json: {\n    email: row.email,\n    day: today,\n    breakfast: todayPlan.breakfast,\n    lunch: todayPlan.lunch,\n    dinner: todayPlan.dinner,\n    snack: todayPlan.snack,\n    ingredients_to_buy: todayPlan.ingredients_to_buy,\n    daily_wellbeing_tip: todayPlan.daily_wellbeing_tip\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        736,
+        0
+      ],
+      "id": "36f86589-6adb-4727-883f-dff933350885",
+      "name": "Select Today's Meals"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "413d00e7-f624-4f0e-9e54-4db3dc601493",
+              "name": "to",
+              "value": "={{ $json.email }}",
+              "type": "string"
+            },
+            {
+              "id": "558d0792-8853-4bea-8efc-087b9efca522",
+              "name": "Subject",
+              "value": "=🥗 Your NutriPlan for – {{ $now.toFormat('cccc, dd LLLL') }}",
+              "type": "string"
+            },
+            {
+              "id": "98fa74a3-bfb1-4579-b440-c465dabb0112",
+              "name": "message",
+              "value": "=<div style=\"font-family: Arial, sans-serif; max-width: 650px; margin: auto; color: #333;\">\n\n  <div style=\"background: #4CAF50; padding: 25px; border-radius: 12px 12px 0 0; color: white;\">\n    <h1 style=\"margin: 0;\">🥗 Your Daily Meal Plan</h1>\n    <p style=\"margin-bottom: 0;\">{{ $json.day }}</p>\n  </div>\n\n  <div style=\"padding: 25px; border: 1px solid #ddd; border-top: none;\">\n\n    <h2>🍳 Breakfast</h2>\n    <p>{{ $json.breakfast }}</p>\n\n    <h2>🥗 Lunch</h2>\n    <p>{{ $json.lunch }}</p>\n\n    <h2>🍽️ Dinner</h2>\n    <p>{{ $json.dinner }}</p>\n\n    <h2>🍎 Healthy Snack</h2>\n    <p>{{ $json.snack }}</p>\n\n    <h2>🛒 Ingredients to Buy</h2>\n    <p>• {{ $json.ingredients_to_buy.join('<br>• ') }}</p>\n\n    <h2>🧠 Daily Well-being Tip</h2>\n    <p>{{ $json.daily_wellbeing_tip }}</p>\n\n    <hr>\n\n    <p style=\"font-size: 13px; color: #888;\">\n      This meal plan was automatically generated by NutriPlan AI.\n    </p>\n\n  </div>\n\n</div>",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.5,
+      "position": [
+        1024,
+        0
+      ],
+      "id": "8eaefebd-18b2-4870-bfcf-82ca38b8a0ec",
+      "name": "Format Daily Email"
+    },
+    {
+      "parameters": {
+        "jsCode": "const rows = $input.all();\n\nif (rows.length === 0) {\n  throw new Error(\"No weekly plans were found.\");\n}\n\n// The last item is the last row returned by Google Sheets\nconst latestRow = rows[rows.length - 1];\n\nreturn [latestRow];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        448,
+        0
+      ],
+      "id": "28481fe4-802e-4c76-95c6-bd3f5707cda8",
+      "name": "Find Active Weekly Plan"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Get Weekly Plan",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Weekly Plan": {
+      "main": [
+        [
+          {
+            "node": "Find Active Weekly Plan",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Select Today's Meals": {
+      "main": [
+        [
+          {
+            "node": "Format Daily Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format Daily Email": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Find Active Weekly Plan": {
+      "main": [
+        [
+          {
+            "node": "Select Today's Meals",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "57d61c58-e806-4023-8f74-66ed7b3b444f",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "0087d243ca18ef4f6df9ecc49cbaf3e9df166a929873ca8859dc41710604d043"
+  },
+  "nodeGroups": [],
+  "id": "I1kv4KNhEYZ4eSWo",
+  "tags": []
+}

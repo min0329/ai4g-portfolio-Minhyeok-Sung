@@ -1,0 +1,380 @@
+{
+  "name": "Nutriplan - Weekly Setup",
+  "nodes": [
+    {
+      "parameters": {
+        "formTitle": "Weekly Preferences Form",
+        "formDescription": "Give your food preferences for the coming week!",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "email",
+              "fieldType": "email"
+            },
+            {
+              "fieldLabel": "Weekly Budget",
+              "fieldType": "number",
+              "fieldName": "How much can you spend on food this week?"
+            },
+            {
+              "fieldLabel": "people",
+              "fieldType": "number"
+            },
+            {
+              "fieldLabel": "dietary_preference",
+              "fieldType": "dropdown",
+              "fieldOptions": {
+                "values": [
+                  {
+                    "option": "No restrictions"
+                  },
+                  {
+                    "option": "Vegetarian"
+                  },
+                  {
+                    "option": "Vegan"
+                  },
+                  {
+                    "option": "Pescatarian"
+                  },
+                  {
+                    "option": "Halal"
+                  },
+                  {
+                    "option": "Other"
+                  }
+                ]
+              }
+            },
+            {
+              "fieldLabel": "ingredients",
+              "fieldType": "textarea",
+              "placeholder": "Eggs, rice, carrots, onions ..."
+            },
+            {
+              "fieldLabel": "cooking_time",
+              "fieldType": "number",
+              "fieldName": "Maximum cooking time in minutes"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.6,
+      "position": [
+        0,
+        0
+      ],
+      "id": "3ffcddb2-84d6-428a-83f3-37a34bba01ad",
+      "name": "Weekly Preferences Form",
+      "webhookId": "6c9cfa86-80df-406e-9ced-f1b7c88d7fc5"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "7d2553ce-d7dc-48f5-86be-e5c2d418c5f3",
+              "name": "week_start",
+              "value": "={{ $now.startOf('week').toFormat('yyyy-MM-dd') }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.5,
+      "position": [
+        224,
+        0
+      ],
+      "id": "d1f0f1e4-0537-42ef-9dd8-4d2a74a2bed2",
+      "name": "Prepare Preferences"
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4.1",
+          "mode": "list",
+          "cachedResultName": "GPT-4.1"
+        },
+        "responses": {
+          "values": [
+            {
+              "content": "=Create a personalized 7-day meal plan using the user's preferences below.\n\nWeekly budget: €{{ $('Weekly Preferences Form').item.json['How much can you spend on food this week?'] }}\nNumber of people: {{ $('Weekly Preferences Form').item.json.people }}\nDietary preference: {{ $('Weekly Preferences Form').item.json.dietary_preference }}\nAvailable ingredients: {{ $('Weekly Preferences Form').item.json.ingredients }}\nMaximum cooking time per meal: {{ $('Weekly Preferences Form').item.json['Maximum cooking time in minutes'] }} minutes\n\nCreate meals for Monday through Sunday.\n\nFor every day include:\n- breakfast\n- lunch\n- dinner\n- snack\n- ingredients_to_buy\n- daily_wellbeing_tip\n\nAlso provide:\n- weekly_shopping_list\n- estimated_weekly_cost\n\nRequirements:\n- Stay within the user's weekly budget.\n- Respect the dietary preference.\n- Prioritize ingredients the user already has.\n- Reuse ingredients where practical to reduce cost and food waste.\n- Keep meals within the maximum cooking time.\n- Make the meals practical for the specified number of people.\n- Include a small, realistic mental well-being tip each day.\n- Do not provide medical advice.\n\nReturn ONLY valid JSON. Do not use Markdown or code fences.\n\nUse exactly this structure:\n\n{\n  \"Monday\": {\n    \"breakfast\": \"...\",\n    \"lunch\": \"...\",\n    \"dinner\": \"...\",\n    \"snack\": \"...\",\n    \"ingredients_to_buy\": [\"...\", \"...\"],\n    \"daily_wellbeing_tip\": \"...\"\n  },\n  \"Tuesday\": {\n    \"breakfast\": \"...\",\n    \"lunch\": \"...\",\n    \"dinner\": \"...\",\n    \"snack\": \"...\",\n    \"ingredients_to_buy\": [\"...\", \"...\"],\n    \"daily_wellbeing_tip\": \"...\"\n  },\n  \"Wednesday\": {\n    \"breakfast\": \"...\",\n    \"lunch\": \"...\",\n    \"dinner\": \"...\",\n    \"snack\": \"...\",\n    \"ingredients_to_buy\": [\"...\", \"...\"],\n    \"daily_wellbeing_tip\": \"...\"\n  },\n  \"Thursday\": {\n    \"breakfast\": \"...\",\n    \"lunch\": \"...\",\n    \"dinner\": \"...\",\n    \"snack\": \"...\",\n    \"ingredients_to_buy\": [\"...\", \"...\"],\n    \"daily_wellbeing_tip\": \"...\"\n  },\n  \"Friday\": {\n    \"breakfast\": \"...\",\n    \"lunch\": \"...\",\n    \"dinner\": \"...\",\n    \"snack\": \"...\",\n    \"ingredients_to_buy\": [\"...\", \"...\"],\n    \"daily_wellbeing_tip\": \"...\"\n  },\n  \"Saturday\": {\n    \"breakfast\": \"...\",\n    \"lunch\": \"...\",\n    \"dinner\": \"...\",\n    \"snack\": \"...\",\n    \"ingredients_to_buy\": [\"...\", \"...\"],\n    \"daily_wellbeing_tip\": \"...\"\n  },\n  \"Sunday\": {\n    \"breakfast\": \"...\",\n    \"lunch\": \"...\",\n    \"dinner\": \"...\",\n    \"snack\": \"...\",\n    \"ingredients_to_buy\": [\"...\", \"...\"],\n    \"daily_wellbeing_tip\": \"...\"\n  },\n  \"weekly_shopping_list\": [\"...\", \"...\"],\n  \"estimated_weekly_cost\": \"...\"\n}"
+            }
+          ]
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 2.3,
+      "position": [
+        432,
+        0
+      ],
+      "id": "9c353fc9-5431-4d50-b674-531d19c16d23",
+      "name": "AI Weekly Meal Planner",
+      "credentials": {
+        "openAiApi": {
+          "id": null,
+          "name": "",
+          "__aiGatewayManaged": true
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "9ea19f6d-b956-4c95-837d-0c7aed454005",
+              "name": "email",
+              "value": "={{ $('Weekly Preferences Form').item.json.email }}",
+              "type": "string"
+            },
+            {
+              "id": "0f3689dc-cee2-4ad2-b867-621ec3307628",
+              "name": "week_start",
+              "value": "={{ $now.startOf('week').toFormat('yyyy-MM-dd') }}",
+              "type": "string"
+            },
+            {
+              "id": "56db9432-6656-4965-8096-073abea57b63",
+              "name": "budget",
+              "value": "={{ $('Weekly Preferences Form').item.json['How much can you spend on food this week?'] }}",
+              "type": "number"
+            },
+            {
+              "id": "dcae9813-6852-4fbb-a5de-8aa6ca007b6b",
+              "name": "people",
+              "value": "={{ $('Weekly Preferences Form').item.json.people }}",
+              "type": "number"
+            },
+            {
+              "id": "db3a11ed-5972-4a8b-871a-f1b1637d17d8",
+              "name": "dietary_preference",
+              "value": "={{ $('Weekly Preferences Form').item.json.dietary_preference }}",
+              "type": "string"
+            },
+            {
+              "id": "b5cb87c4-77eb-4f98-83f6-2256e609efe6",
+              "name": "ingredients",
+              "value": "={{ $('Weekly Preferences Form').item.json.ingredients }}",
+              "type": "string"
+            },
+            {
+              "id": "6c1d6ede-02bf-4e03-b264-7b3cc1d02dfd",
+              "name": "cooking_time",
+              "value": "={{ $('Weekly Preferences Form').item.json['Maximum cooking time in minutes'] }}",
+              "type": "number"
+            },
+            {
+              "id": "e8d0d3ef-16f4-4f02-b994-0e5dad99662f",
+              "name": "weekly_plan",
+              "value": "={{ $json.output[0].content[0].text }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.5,
+      "position": [
+        800,
+        0
+      ],
+      "id": "132b0577-455e-48de-ae4d-bc8699c5b5b0",
+      "name": "Prepare Weekly Plan"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1CowcwdtQwRkZ9L6BGVhFSwG9ZzUBqxyOWgztkfIxRUw",
+          "mode": "list",
+          "cachedResultName": "NutriPlan Database",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1CowcwdtQwRkZ9L6BGVhFSwG9ZzUBqxyOWgztkfIxRUw/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Weekly Plans",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1CowcwdtQwRkZ9L6BGVhFSwG9ZzUBqxyOWgztkfIxRUw/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "email": "={{ $json.email }}",
+            "week_start": "={{ $json.week_start }}",
+            "budget": "={{ $json.budget }}",
+            "people": "={{ $json.people }}",
+            "dietary_preference": "={{ $json.dietary_preference }}",
+            "ingredients": "={{ $json.ingredients }}",
+            "cooking_time": "={{ $json.cooking_time }}",
+            "weekly_plan": "={{ $json.weekly_plan }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "week_start",
+              "displayName": "week_start",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "budget",
+              "displayName": "budget",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "people",
+              "displayName": "people",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "dietary_preference",
+              "displayName": "dietary_preference",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "ingredients",
+              "displayName": "ingredients",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "cooking_time",
+              "displayName": "cooking_time",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "weekly_plan",
+              "displayName": "weekly_plan",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        1024,
+        0
+      ],
+      "id": "94ebe936-2005-41de-89b0-421fc997a414",
+      "name": "Update NutriPlan Database",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "JWCQ4nut6COBuvOa",
+          "name": "Google Sheets account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Weekly Preferences Form": {
+      "main": [
+        [
+          {
+            "node": "Prepare Preferences",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare Preferences": {
+      "main": [
+        [
+          {
+            "node": "AI Weekly Meal Planner",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Weekly Meal Planner": {
+      "main": [
+        [
+          {
+            "node": "Prepare Weekly Plan",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare Weekly Plan": {
+      "main": [
+        [
+          {
+            "node": "Update NutriPlan Database",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "e9610044-20ae-4f6b-bac0-54e398c85579",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "0087d243ca18ef4f6df9ecc49cbaf3e9df166a929873ca8859dc41710604d043"
+  },
+  "nodeGroups": [],
+  "id": "QTF2crK1evjIOcZN",
+  "tags": []
+}
