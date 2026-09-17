@@ -41,10 +41,17 @@ Most European adults do not meet dietary guidelines. In 2019, one in three EU re
 : We built NutriPlan AI, an automated meal-planning assistant using n8n. Users submit their email, budget, dietary preferences, allergies, available ingredients, and cooking time through an online form. The AI generates a personalized 7-day meal plan with preparation instructions and a categorized shopping list, which can be sent to the user by email and recorded in Google Sheets.
 
 **Link to the live thing (if any):**
-_Deployed URL, workflow export, video demo - whatever proves it works._
+https://drive.google.com/file/d/1d4ciwxrA_CrR_wb6s6U4cQ7Va9pN5NWQ/view?usp=sharing
 
 **How do I run it?**
-_Short instructions so someone else can start it._
+: You execute the workflow and it runs in this order:
+•⁠  ⁠Form pop-up asking for information
+•⁠  ⁠AI writes a meal plan fitting to the users preferences
+•⁠  ⁠The meal plan gets sent to the database
+•⁠  ⁠2nd automation starts every day at 9AM
+•⁠  ⁠Data gets collected from the database
+•⁠  ⁠The day of the week is determined
+•⁠  ⁠An email with a daily meal plan is sent to the user
 
 **Who did what?**
 _Be honest about the split of work between you and your partner._
