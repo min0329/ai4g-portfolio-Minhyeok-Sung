@@ -23,19 +23,20 @@ _List the files, or link to them. Notebook exports, screenshots, scripts._
 > Your tool and your SDG for this hackathon are announced at the **start of Friday's class**.
 > Write them down here once you know them.
 
-**Project title:**
+**Project title:** NutriPlan AI
 
-**My pair partner:**
+**My pair partner:** Benjamin
 
-**Tool we had to use:**
+**Tool we had to use:** N8N
 
-**SDG we had to address:**
+**SDG we had to address:** SDG 3 - Good Health & Well-being. 
+: NutriPlan AI supports healthier lifestyles by helping people plan balanced meals, make informed food choices, and reduce the stress associated with daily meal preparation. Although it does not replace professional nutritional advice, it provides an accessible tool that encourages healthier everyday habits.
 
 **What problem does it solve, and for whom?**
-_Name a real, specific user. "Everyone" is not a user._
+: NutriPlan AI solves the problem of difficulty planning healthy, affordable, and practical meals. Many people struggle to choose what to cook because of limited time, budget, dietary preferences, or a lack of meal-planning knowledge. Our target audience is busy individuals including international students and workers as well as families who want to improve their eating habits and save time when preparing meals.
 
 **What did you build?**
-_Two or three sentences. What can a user actually do with it?_
+: We built NutriPlan AI, an automated meal-planning assistant using n8n. Users submit their email, budget, dietary preferences, allergies, available ingredients, and cooking time through an online form. The AI generates a personalized 7-day meal plan with preparation instructions and a categorized shopping list, which can be sent to the user by email and recorded in Google Sheets.
 
 **Link to the live thing (if any):**
 _Deployed URL, workflow export, video demo - whatever proves it works._
@@ -47,7 +48,7 @@ _Short instructions so someone else can start it._
 _Be honest about the split of work between you and your partner._
 
 **Ethical reflection - what are the risks of your tool? Who could it harm?**
-_Every hackathon requires this. One honest paragraph beats three vague ones._
+: NutriPlan AI is designed to support people in planning healthier meals, but because it relates to health and nutrition, errors could have real consequences. For example, if the AI overlooks a user's allergy, recommends an unsuitable ingredient, or generates an unbalanced meal plan, the user could make an unhealthy decision. The automation could also be delayed, fail to send the email, or become unavailable, meaning users should not depend on it as their only source of nutritional guidance. I would trust NutriPlan AI for general meal inspiration and planning, but not for managing medical conditions, serious allergies, or specific dietary requirements. Users should always check ingredients, food labels, and nutritional suitability themselves. Automation should stop when a situation requires professional judgment, such as medical diets or complex health needs, and a qualified healthcare professional or dietitian should take over. This ensures that NutriPlan AI remains a supportive tool rather than replacing human responsibility and professional care.
 
 ### Checklist
 - [ ] Prototype code (or export / workflow file) is in `hackathon/`
