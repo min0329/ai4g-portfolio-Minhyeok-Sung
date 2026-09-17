@@ -35,6 +35,8 @@ _List the files, or link to them. Notebook exports, screenshots, scripts._
 **What problem does it solve, and for whom?**
 : NutriPlan AI solves the problem of difficulty planning healthy, affordable, and practical meals. Many people struggle to choose what to cook because of limited time, budget, dietary preferences, or a lack of meal-planning knowledge. Our target audience is busy individuals including international students and workers as well as families who want to improve their eating habits and save time when preparing meals.
 
+Most European adults do not meet dietary guidelines. In 2019, one in three EU residents (33%) consumed no fruit or vegetables on a daily basis, and only 12% ate the recommended five or more portions daily (Eurostat, 2022). In the Netherlands, despite improvements, only 29% of adults meet the vegetable guideline and approximately 20% meet the fruit guideline (RIVM DNFCS 2019–2021). More than half of the EU population is overweight (50.6%), and 16.3% are obese (Eurostat, 2024; Eurostat, 2026).
+
 **What did you build?**
 : We built NutriPlan AI, an automated meal-planning assistant using n8n. Users submit their email, budget, dietary preferences, allergies, available ingredients, and cooking time through an online form. The AI generates a personalized 7-day meal plan with preparation instructions and a categorized shopping list, which can be sent to the user by email and recorded in Google Sheets.
 
