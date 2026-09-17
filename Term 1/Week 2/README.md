@@ -43,6 +43,8 @@ Most European adults do not meet dietary guidelines. In 2019, one in three EU re
 **Link to the live thing (if any):**
 https://drive.google.com/file/d/1d4ciwxrA_CrR_wb6s6U4cQ7Va9pN5NWQ/view?usp=sharing
 
+Database link: https://docs.google.com/spreadsheets/d/1CowcwdtQwRkZ9L6BGVhFSwG9ZzUBqxyOWgztkfIxRUw/edit?usp=sharing
+
 **How do I run it?**
 : You execute the workflow and it runs in this order:
 •⁠  ⁠Form pop-up asking for information
@@ -54,7 +56,9 @@ https://drive.google.com/file/d/1d4ciwxrA_CrR_wb6s6U4cQ7Va9pN5NWQ/view?usp=shari
 •⁠  ⁠An email with a daily meal plan is sent to the user
 
 **Who did what?**
-_Be honest about the split of work between you and your partner._
+Benjamin has created the automation workflows of NutriPlan through n8n platform and he was in charge of texting the prototype actively. Also, he worked on recording the demo.
+
+Min came up with the NutriPlan idea and created basic logics of NutriPlan. And Min worked on presentation slides and general execution for the project.
 
 **Ethical reflection - what are the risks of your tool? Who could it harm?**
 : NutriPlan AI is designed to support people in planning healthier meals, but because it relates to health and nutrition, errors could have real consequences. For example, if the AI overlooks a user's allergy, recommends an unsuitable ingredient, or generates an unbalanced meal plan, the user could make an unhealthy decision. The automation could also be delayed, fail to send the email, or become unavailable, meaning users should not depend on it as their only source of nutritional guidance. I would trust NutriPlan AI for general meal inspiration and planning, but not for managing medical conditions, serious allergies, or specific dietary requirements. Users should always check ingredients, food labels, and nutritional suitability themselves. Automation should stop when a situation requires professional judgment, such as medical diets or complex health needs, and a qualified healthcare professional or dietitian should take over. This ensures that NutriPlan AI remains a supportive tool rather than replacing human responsibility and professional care.
@@ -82,6 +86,8 @@ _Be honest about the split of work between you and your partner._
 ## 4. Reflection
 
 **What is the most important thing I learned this week?**
+: This week, I was surprised a lot by this new AI tool: n8n. I did not expect that there was such incredible tool that could automate a lot of things for our daily life.
 
 **Where does this connect to "AI for Good"?**
-_One concrete link to ethics, sustainability or social impact._
+:This project (NutriPlan) supports healthier everyday food choices through structured meal planning. It makes meal planning more accessible by considering time, budget, and preferences, and it may reduce decision-making stress around what to cook. But, it does not diagnose, treat medical conditions, or replace a dietitian or healthcare professional.
+
