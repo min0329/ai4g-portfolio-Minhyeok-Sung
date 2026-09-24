@@ -51,7 +51,9 @@ Inclu helps this user by bringing together local community groups, social suppor
 (explained in the video)
 
 **Who did what?**
-_Be honest about the split of work between you and your partner._
+
+**Iqbal**: Brainstorming ideas, research on python coding using AI tools, making the webapp
+**Min**: Brainstorming ideas, research on statistical data that could be rationale of the problem statements, making the presentation slides.
 
 **Ethical reflection - what are the risks of your tool? Who could it harm?**
 : Firstly, there is a risk of AI generating inaccurate or outdated community resources. AI models can hallucinate information, and community resources change frequently organisations move, close, or change their services. An AI-generated resource that does not exist could waste a user's time or erode trust.
@@ -84,6 +86,7 @@ Thirdly, there is a risk of stereotyping migrants or socially isolated people. F
 ## 4. Reflection
 
 **What is the most important thing I learned this week?**
+: Throughout the whole process of this hackathon, I have learned that AI API tokens can be used up really quickly, especially when testing and making repeated requests. We discovered that the issue was caused by reaching the usage limit, when the API key stopped working. Furthermore, as an International student from South Korea, it was essential and important to think and feel as one of the target group, so that it could really solve the real problem.
 
 **Where does this connect to "AI for Good"?**
-_One concrete link to ethics, sustainability or social impact._
+: The identified inequality connects directly to SDG 10.2, which commits to "empower and promote the social, economic and political inclusion of all, irrespective of age, sex disability, race, ethnicity, origin, religion or economic or other status." The problem is a social inclusion gap: newcomers with limited Dutch proficiency and limited local networks participate less in community life, feel less connected, and face practical barriers to understanding and accessing services. This is a direct manifestation of unequal inclusion based on origin and language; the precise type of inequality SDG 10.2 seeks to address.
