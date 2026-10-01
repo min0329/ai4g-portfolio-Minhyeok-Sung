@@ -116,6 +116,7 @@ AI‑made climate pictures can be very strong, but they can also trick people by
 ## 4. Reflection
 
 **What is the most important thing I learned this week?**
+: There are diverse AI tools that could generate different types of realistic images and videos super easily, however, at the same time, those tools can also generate misleads and misuse that could confuse people or harm them. So, it is important to be aware of this and use right tools in a right way.
 
 **Where does this connect to "AI for Good"?**
-_One concrete link to ethics, sustainability or social impact._
+: Young amsterdammers know littering is wrong, yet in the moment "just one" feels harmless. Those single acts add up to 5,280 pieces of plastic in the IJ river every day. And they's why this film reaches the target audience and could convince them. Making them aware of the fact that such small acts/behaviour could cause big harm in the future.
