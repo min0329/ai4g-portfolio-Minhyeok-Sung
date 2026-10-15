@@ -27,7 +27,7 @@ _List the files, or link to them. Notebook exports, screenshots, scripts._
 Live Sentiment for ChatGPT, Claude and Gemini
 
 **My pair partner:**\
-Jalie Vermeegen/Minhyeok Sung\
+Jalie Vermeegen
 \
 **Tool we had to use:**
 A pre-trained Hugging Face transformer, run locally from Python: `cardiffnlp/twitter-xlm-roberta-base-sentiment`. Streamlit provides the dashboard and SQLite stores the collected items and predictions. 
@@ -161,7 +161,7 @@ Stop a process with Ctrl+C. Keep database.db when replacing the Python files, si
 # 7. Who did what:
 Jalie:
 
-Minhyeok:
+Minhyeok: Brainstorming ideas together with my partner, and researching on it for reasonale and supportive resources. Working on the presentation slides.
 
 
 # 8. Ethical reflection 
