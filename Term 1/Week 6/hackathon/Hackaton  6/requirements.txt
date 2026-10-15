@@ -1,0 +1,9 @@
+pandas>=2.2,<3
+streamlit>=1.49,<2
+altair>=5,<7
+transformers>=4.45,<5
+torch>=2.6,<3
+sentencepiece>=0.2
+protobuf>=5,<7
+tzdata>=2024.1
+captum
