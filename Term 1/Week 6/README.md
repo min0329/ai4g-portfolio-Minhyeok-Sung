@@ -159,7 +159,7 @@ Optional commands:
 Stop a process with Ctrl+C. Keep database.db when replacing the Python files, since it contains your collected data and saved explanations.
 
 # 7. Who did what:
-Jalie:
+Jalie: Brainstorming ideas with me, making the python program, README (mostly), and the testing.md file. She also made the demo.
 
 Minhyeok: Brainstorming ideas together with my partner, and researching on it for reasonale and supportive resources. Working on the presentation slides.
 
