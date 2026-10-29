@@ -36,7 +36,7 @@
 **What did you build?** A web app where you upload or take a photo of an insect. Our own Roboflow classification model (trained on 887 cleaned Dutch iNaturalist photos) says which of 5 look-alikes it is and how sure it is. The app then tells you what to do: a warning and a report button for waarneming.nl if it's an Asian hornet, "leave it alone" for native insects, and "check it yourself" or "I don't know, report it if in doubt" when the model is unsure.
 
  
-**Link to the live thing (if any):** App: https://ai4g-portfolio-sambam-hornetcheck.streamlit.app · Demo video: [video link]
+**Link to the live thing (if any):** App: https://ai4g-portfolio-sambam-hornetcheck.streamlit.app · Demo video: [https://youtu.be/_IahwLn7EI8]
 
  
 **How do I run it?** Open the app link above, no install needed. An API key is needed.
