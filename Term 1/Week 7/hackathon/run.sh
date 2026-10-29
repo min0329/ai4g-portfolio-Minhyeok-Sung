@@ -1,0 +1,1 @@
+python3 fetch.py https://inaturalist-open-data.s3.amazonaws.com/metadata/inaturalist-open-data-20261027.tar.gz 36704646167 | gzip -dc | tar -x --to-command=/tmp/claude-0/-home-claude/b7b01b37-c874-5069-acdc-043d423a73e5/scratchpad/inat/tools/route.sh
